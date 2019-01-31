@@ -15,12 +15,11 @@ def get_student():
 
     first, last, github = hackbright.get_student_by_github(github)
 
-    html = render_template("student_info.html",
+    return render_template("student_info.html",
                             first=first,
                             last=last,
                             github=github)
 
-    return html
 
 @app.route("/student-search")
 def get_student_form():
@@ -30,6 +29,11 @@ def get_student_form():
 
     return render_template("student_search.html")
 
+@app.route("/confirmation")
+def display_redirect():
+
+    render_template("student_info.html")
+
 @app.route("/student-add", methods=['POST'])
 def student_add():
     """Add a student
@@ -38,15 +42,14 @@ def student_add():
     new route to new html to confirm added student
 
     """
-    payload = {'first_name': 'first_name'}
-    # url = ???
-    # request = 
 
-    first_name = request.form('first_name')
-    last_name = request.form('last_name')
-    github = request.form('github')
+    first_name = request.form.get('first_name')
+    last_name = request.form.get('last_name')
+    github = request.form.get('github')
 
-    first_name, last_name, github = hackbright.make_new_student(first_name, last_name, github)
+    # first_name, last_name, github = 
+
+    hackbright.make_new_student(first_name, last_name, github)
 
     return render_template("confirmation.html",
                             first_name=first_name,

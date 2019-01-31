@@ -4,7 +4,12 @@
     <title>Added Student Confirmation</title>
 </head>
 <body>
-    {{ first_name }} {{ last_name }}
-    {{ github }}
+    First Name: {{ first_name }} 
+    <br>
+    Last Name: {{ last_name }}
+    <br>
+    Github: {{ github }}
+
+    <button> <a href="/student?github={{ github }}"> Get info</a></button>
 </body>
 </html>
